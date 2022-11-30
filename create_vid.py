@@ -102,16 +102,3 @@ out.release()
 # Open Video
 from os import startfile
 startfile(RENDERED_VIDEO_PATH)
-
-# width, height = imagesize.get(IMAGES_ROOT+"/frame0.jpg") # get any image
-# frameSize = (width, height)
-
-# out = cv.VideoWriter('output_video.mp4', cv.VideoWriter_fourcc(*'MP4V'), 30, frameSize)
-
-
-# for filename in filenames:
-  # print(f"Processing {filename}")
-  # img = cv.imread(f"{IMAGES_ROOT}/{filename}")
-  # out.write(img)
-
-# out.release()
