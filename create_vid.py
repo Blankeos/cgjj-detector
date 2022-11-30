@@ -52,7 +52,7 @@ def rrmdir(path):
             os.remove(entry)
     os.rmdir(path)
 
-# generate_images_from_video(VIDEO_PATH, ORIGINAL_PATH)
+generate_images_from_video(VIDEO_PATH, ORIGINAL_PATH)
 
 # 3. Read TEMP_ORIGINAL and Generate Predictions
 filenames = natsorted(os.listdir(ORIGINAL_PATH))
@@ -79,13 +79,14 @@ def generate_predictions(filenames):
       for i, im in enumerate(ims):
         cv.imwrite(filenames_rd[i], im)
 
-# generate_predictions(filenames)
+generate_predictions(filenames)
 
 # 5. Stitch Together to Create a Video
+RENDERED_VIDEO_PATH = "output_video.mp4"
 width, height = imagesize.get(RENDERED_PATH+"/frame0.jpg") # get any image
 frameSize = (width, height)
 
-out = cv.VideoWriter('output_video.mp4', cv.VideoWriter_fourcc('m', 'p', '4', 'v'), 30, frameSize)
+out = cv.VideoWriter(RENDERED_VIDEO_PATH, cv.VideoWriter_fourcc('m', 'p', '4', 'v'), 30, frameSize)
 
 
 filenames = natsorted(os.listdir(RENDERED_PATH))
@@ -96,6 +97,11 @@ for filename in filenames:
   out.write(img)
 
 out.release()
+
+
+# Open Video
+from os import startfile
+startfile(RENDERED_VIDEO_PATH)
 
 # width, height = imagesize.get(IMAGES_ROOT+"/frame0.jpg") # get any image
 # frameSize = (width, height)

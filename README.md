@@ -15,7 +15,7 @@ This repository has two purposes:
 
 Submitted to **Mr. John Christopher Mateo** for **CCS 250 Computer Vision** as a Final Project for the semester.
 
-### 🚀 Get Started
+### 🚀 How to Use:
 
 1. Clone this repository
 
@@ -52,6 +52,39 @@ $ pip install -r requirements.txt
    python realtime_vid.py
    ```
 
+### 📝 Important Links
+
+- [Final Annotated Dataset](https://carlo.vercel.app/)
+- [YoloV5 Training Notebook](https://carlo.vercel.app/)
+- [Final Model Used](https://carlo.vercel.app/)
+
+### 📁 Dataset Directory Structure
+
+```
+| - dataset
+    | -- images
+        | -- train
+        | -- val
+    | -- labels
+        | -- train
+        | -- val
+    labels.txt
+```
+
+### 🧠 Final Model Performance
+
+```
+Model summary: 157 layers, 7020913 parameters, 0 gradients, 15.8 GFLOPs
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100% 4/4 [00:01<00:00,  2.30it/s]
+                   all        100        400      0.996      0.997      0.995      0.775
+                 carlo        100        100          1       0.99      0.995      0.789
+                 glecy        100        100      0.998          1      0.995      0.689
+                 jessa        100        100      0.999          1      0.995      0.815
+                    jj        100        100      0.988          1      0.995      0.805
+```
+
+---
+
 ### 😎 How to recreate this project from scratch
 
 Make sure you already cloned this repository and installed the requirements.
@@ -70,34 +103,3 @@ python preprocessing.py
 5. Download the model from `runs/expt/best_weights.pt` in Colab
 6. Put the `best_weights.pt` inside `/model` dir of this repository. Rename as `cgjj_best.pt`.
 7. Go back to Step 3 in [Get Started](#🚀-get-started).
-
-### 📝 Important Links
-
-- [Final Annotated Dataset](https://carlo.vercel.app/)
-- [YoloV5 Training Notebook](https://carlo.vercel.app/)
-- [Final Model Used](https://carlo.vercel.app/)
-
-### Dataset Directory Structure
-
-```
-| - dataset
-    | -- images
-        | -- train
-        | -- val
-    | -- labels
-        | -- train
-        | -- val
-    labels.txt
-```
-
-### Final Model Performance
-
-```
-Model summary: 157 layers, 7020913 parameters, 0 gradients, 15.8 GFLOPs
-                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100% 4/4 [00:01<00:00,  2.30it/s]
-                   all        100        400      0.996      0.997      0.995      0.775
-                 carlo        100        100          1       0.99      0.995      0.789
-                 glecy        100        100      0.998          1      0.995      0.689
-                 jessa        100        100      0.999          1      0.995      0.815
-                    jj        100        100      0.988          1      0.995      0.805
-```
