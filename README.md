@@ -35,22 +35,22 @@ $ pip install -r requirements.txt
 
 - [x] Create video from `./videoData/test.mp4` (Smoothest but Long Process Time)
 
-  ```sh
-  python create_vid.py
-  # Saves video on 'output_video.mp4'
-  ```
+```sh
+python create_vid.py
+# Saves video on 'output_video.mp4'
+```
 
 - [x] Use model in real-time on **camera** (Choppy depending on GPU)
 
-  ```sh
-  python realtime_cam.py
-  ```
+```sh
+python realtime_cam.py
+```
 
 - [x] Use model in real-time on `./videoData/test.mp4` (Choppy depending on GPU)
 
-  ```sh
-  python realtime_vid.py
-  ```
+```sh
+python realtime_vid.py
+```
 
 ### 😎 How to recreate this project from scratch
 
