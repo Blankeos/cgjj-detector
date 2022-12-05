@@ -37,12 +37,15 @@ if not os.path.exists(RENDERED_PATH):
 def generate_images_from_video(videodir, outdir):
   cap = cv.VideoCapture(videodir)
   success,image = cap.read()
+  
   count = 0
+  print(f"[Generating Frames From Video: {videodir}]")
   while success:
       cv.imwrite(f"{outdir}/frame{count}.jpg", image) # save frame as JPEG file      
       success,image = cap.read()
-      print(f'Read a new frame {count}: ', success)
+      print(f'\r+ Read a new frame {count}: {success}'.ljust(30), end="\r")
       count += 1
+  print(f"Done: {videodir}. Frames saved to {outdir}.")
 
 def rrmdir(path):
     for entry in os.scandir(path):
@@ -70,14 +73,21 @@ def batcher(iterable, batch_size):
 def generate_predictions(filenames):
   NUM_BATCHES = len(list(batcher(filenames, PREDICT_BATCH_SIZE)))
 
+  print("[Generating Frames with Predictions]")
   for i, batch in enumerate(batcher(filenames, PREDICT_BATCH_SIZE)):
-      print(f"Predicting {i+1}/{NUM_BATCHES} Batch...")
+      percent = ((i+1) / float(NUM_BATCHES))
+      bars = f"{'█' * int(50 * percent)}".ljust(50, '-')
+      print(f"\rPredicting {len(batch)} Frames in Batch {i+1}/{NUM_BATCHES} |{bars}| {(percent*100):.2f}%        ", end="\r")
       filenames_og = [ORIGINAL_PATH + "/" + filename for filename in batch]
       filenames_rd = [RENDERED_PATH + "/" + filename for filename in batch]
       ims = detect(filenames_og)
       
       for i, im in enumerate(ims):
         cv.imwrite(filenames_rd[i], im)
+  percent = 1
+  bars = f"{'█' * int(50 * percent)}".ljust(50, '-')
+  print(f"\rPredicting {len(batch)} Frames in Batch {NUM_BATCHES}/{NUM_BATCHES} |{bars}| 100%        ")
+  print(f"Done: Saved to {RENDERED_PATH}")
 
 generate_predictions(filenames)
 
@@ -91,11 +101,11 @@ out = cv.VideoWriter(RENDERED_VIDEO_PATH, cv.VideoWriter_fourcc('m', 'p', '4', '
 
 filenames = natsorted(os.listdir(RENDERED_PATH))
 
-print("Stitching Images Into Video...")
+print("[Stitching Images Into Video]")
 for filename in filenames:
   img = cv.imread(f"{RENDERED_PATH}/{filename}")
   out.write(img)
-
+print("Done: Final video saved to {RENDERED_VIDEO_PATH}")
 out.release()
 
 

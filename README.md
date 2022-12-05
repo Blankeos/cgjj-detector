@@ -54,9 +54,9 @@ $ pip install -r requirements.txt
 
 ### 📝 Important Links
 
-- [Final Annotated Dataset](https://carlo.vercel.app/)
-- [YoloV5 Training Notebook](https://carlo.vercel.app/)
-- [Final Model Used](https://carlo.vercel.app/)
+- [Final Annotated Dataset](https://drive.google.com/drive/folders/18rj0MZ2vT_22wnRXBmll7RkDSqnGJXXE?usp=share_link)
+- [YoloV5 Training Notebook](https://colab.research.google.com/drive/1qct0OJryhOWcNPBE15wgIgECriVE5X75?usp=sharing)
+- [Final Model Used](/model/cgjj_best.pt)
 
 ### 📁 Dataset Directory Structure
 
